@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/[locale]/page": "/[locale]",
+  "/[locale]/planning/page": "/[locale]/planning",
+  "/[locale]/demolition/page": "/[locale]/demolition",
+  "/[locale]/home/page": "/[locale]/home",
+  "/[locale]/about/page": "/[locale]/about",
+  "/[locale]/demo/page": "/[locale]/demo",
+  "/[locale]/projects/[slug]/page": "/[locale]/projects/[slug]",
+  "/[locale]/renovation/page": "/[locale]/renovation"
+}

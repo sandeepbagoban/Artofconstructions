@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* === Custom Font Faces === */
+@font-face {
+  font-family: 'Fira Mono';
+  src: url('/fonts/Fira_Mono/FiraMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Fira Mono';
+  src: url('/fonts/Fira_Mono/FiraMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Fira Mono';
+  src: url('/fonts/Fira_Mono/FiraMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Publico Banner';
+  src: url('/fonts/Publico_Banner_Web/Publico Banner Web Roman Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* === Root Theme Variables === */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --font-sans: 'Publico Banner', serif;
+  --font-mono: 'Fira Mono', monospace;
+
+  --heading-color : #2B5450;
+  --text-color : #302543;
+  --text2-color : #00102F;
+}
+
+/* === Dark Mode Support === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fff;
+    --foreground: #ededed;
+  }
+}
+
+/* === Global Body Styles === */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* === Custom Font Classes === */
+.ff_publico {
+  font-family: 'Publico Banner', serif;
+}
+
+.ff_fira {
+  font-family: 'Fira Mono', monospace;
+}
+
+
+/* === Custom colors Classes === */
+
+.heading_text {
+  color: var(--heading-color);
+}
+
+.main_text {
+  color: var(--text-color);
+}
+
+.secondary_text {
+  color: var(--text2-color);
+}
