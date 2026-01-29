@@ -11,8 +11,7 @@ const nextConfig = {
     ],
     // Optional: if you need to use unoptimized images
     // unoptimized: true,
-  },
-  output: 'export',
+  }
 };
 
 export default nextConfig;
