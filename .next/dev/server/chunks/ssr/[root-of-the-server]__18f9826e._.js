@@ -260,7 +260,7 @@ function generateHomeSEOMetadata(data, locale = "en") {
     const description = locale === "fr" ? banner?.french_page_meta_description || banner?.page_meta_description || "Default Home Description" : banner?.page_meta_description || "Default Home Description";
     const keywords = locale === "fr" ? banner?.french_page_meta_keywords || banner?.page_meta_keywords || "default, keywords" : banner?.page_meta_keywords || "default, keywords";
     const robots = locale === "fr" ? banner?.french_page_meta_robots || banner?.page_meta_robots || "index, follow" : banner?.page_meta_robots || "index, follow";
-    const canonical = locale === "fr" ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://thedigitechmedia.com/${locale}/` : banner?.page_meta_canonical || `https://thedigitechmedia.com/${locale}/`;
+    const canonical = locale === "fr" ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/` : banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/`;
     const ogTitle = locale === "fr" ? banner?.french_page_meta_og_title || banner?.page_meta_og_title || title : banner?.page_meta_og_title || title;
     const ogDescription = locale === "fr" ? banner?.french_page_meta_og_description || banner?.page_meta_og_description || description : banner?.page_meta_og_description || description;
     const ogImage = locale === "fr" ? banner?.french_page_meta_og_image ? [

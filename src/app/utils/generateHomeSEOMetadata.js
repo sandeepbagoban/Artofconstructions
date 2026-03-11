@@ -24,8 +24,8 @@ export function generateHomeSEOMetadata(data, locale = "en") {
 
     const canonical =
         locale === "fr"
-            ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://thedigitechmedia.com/${locale}/`
-            : banner?.page_meta_canonical || `https://thedigitechmedia.com/${locale}/`;
+            ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/`
+            : banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/`;
 
     const ogTitle =
         locale === "fr"

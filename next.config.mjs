@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'thedigitechmedia.com',
+        hostname: 'artofconstructions.vercel.app',
         pathname: '/theArt/public/**',
       },
       {
