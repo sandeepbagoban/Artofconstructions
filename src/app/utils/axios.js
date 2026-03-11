@@ -13,7 +13,7 @@ import {
 
 // Create a reusable axios instance
 // const api = axios.create({
-//     baseURL: process.env.NEXT_PUBLIC_API_URL || "https://thedigitechmedia.com/theArt/public/",
+//     baseURL: process.env.NEXT_PUBLIC_API_URL || "https://www.cms.artconstruction.be/",
 // });
 
 
@@ -110,7 +110,7 @@ export async function projectDetailData(locale = "en", slug) {
 
 export const submitContactForm = async (formData) => {
     try {
-        const response = await BASEURL.post(CONTACTUS, {
+        const response = await api.post(CONTACTUS, {
             your_name: formData.your_name,
             email_id: formData.email_id,
             subject: formData.subject,

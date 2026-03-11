@@ -3,15 +3,17 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-         protocol: 'https',
-        hostname: 'www.cms.artconstruction.be',
-        pathname: '/**',
+        protocol: 'https',
+        hostname: 'thedigitechmedia.com',
+        pathname: '/theArt/public/**',
       },
-      // Add other domains/patterns as needed
+      {
+        protocol: 'https',
+        hostname: 'www.cms.artconstruction.be',
+        pathname: '/**', // allow all images from this domain
+      },
     ],
-    // Optional: if you need to use unoptimized images
-    // unoptimized: true,
-  }
+  },
 };
 
 export default nextConfig;
