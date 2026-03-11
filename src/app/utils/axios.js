@@ -13,7 +13,7 @@ import {
 
 // Create a reusable axios instance
 // const api = axios.create({
-//     baseURL: process.env.NEXT_PUBLIC_API_URL || "https://www.cms.artconstruction.be/",
+//     baseURL: process.env.NEXT_PUBLIC_API_URL || "https://artofconstructions.vercel.app/theArt/public/",
 // });
 
 

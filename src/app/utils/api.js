@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// export const DOMAIN = "https://www.cms.artconstruction.be/";
+// export const DOMAIN = "https://artofconstructions.vercel.app/theArt/public/";
 export const DOMAIN = "https://www.cms.artconstruction.be/";
 export const BASEURL = axios.create({
     baseURL: DOMAIN + "api/",
