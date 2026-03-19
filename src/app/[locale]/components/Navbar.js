@@ -28,55 +28,57 @@ const Header = () => {
 
     return (
         <>
-            {/* Top Navbar */}
-            <div
-                className={`w-full flex items-center justify-between px-4 py-3 fixed top-0 z-50 transition-all duration-300 
-                ${scrolled ? 'bg-white/60 backdrop-blur-md shadow-md' : 'bg-white'}`}
-            >
-                {/* Left: Menu Icon */}
-                <div
-                    className="text-2xl text-gray-800 cursor-pointer"
-                    onClick={toggleDrawer}
-                >
-                    <Image
-                        src="/assets/images/menu_icon.svg"
-                        alt="Menu"
-                        width={24}
-                        height={24}
-                    />
-                </div>
+           {/* Top Navbar */}
+<div
+  className={`w-full flex items-center justify-between px-4 py-6 fixed top-0 z-50 transition-all duration-300 
+  ${scrolled ? 'bg-white/60 backdrop-blur-md shadow-md' : 'bg-transparent'}`}
+>
+  {/* Left: Menu + Logo */}
+  <div className="flex items-center gap-3">
+    <div
+      className="text-2xl text-gray-800 cursor-pointer"
+      onClick={toggleDrawer}
+    >
+      <Image
+        src="/assets/images/menu_icon.svg"
+        alt="Menu"
+        width={24}
+        height={24}
+      />
+    </div>
 
-                {/* Center: Logo */}
-                <div className="flex items-center space-x-2">
-                    <Link href={`/${currentLocale}`}>
-                        <Image
-                            src="/assets/images/logo.svg"
-                            alt="Logo"
-                            width={250}
-                            height={60}
-                            className="cursor-pointer w-auto h-auto max-w-[200px] sm:max-w-[250px] md:max-w-[250px]"
-                        />
-                    </Link>
-                </div>
+    {/* Logo */}
+    <Link href={`/${currentLocale}`}>
+      <Image
+        src="/assets/images/logo.svg"
+        alt="Logo"
+        width={180}
+        height={50}
+        className="cursor-pointer w-auto h-auto max-w-[160px] sm:max-w-[180px]"
+      />
+    </Link>
+  </div>
 
-                {/* Right: Language Options */}
-                <div className="flex items-center gap-3 text-black text-sm sm:text-base">
-                    <Link
-                        href={`/fr/${pathWithoutLocale}`}
-                        className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 ${currentLocale === "fr" ? "font-bold text-blue-600" : ""
-                            }`}
-                    >
-                        FR
-                    </Link>
-                    <Link
-                        href={`/en/${pathWithoutLocale}`}
-                        className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 ${currentLocale === "en" ? "font-bold text-blue-600" : ""
-                            }`}
-                    >
-                        ENG
-                    </Link>
-                </div>
-            </div>
+  {/* Right: Language Options */}
+  <div className="flex items-center gap-3 text-black text-sm sm:text-base">
+    <Link
+      href={`/fr/${pathWithoutLocale}`}
+      className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 ${
+        currentLocale === "fr" ? "font-bold text-blue-600" : ""
+      }`}
+    >
+      FR
+    </Link>
+    <Link
+      href={`/en/${pathWithoutLocale}`}
+      className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 ${
+        currentLocale === "en" ? "font-bold text-blue-600" : ""
+      }`}
+    >
+      ENG
+    </Link>
+  </div>
+</div>
 
             {/* Drawer */}
             <div
@@ -90,7 +92,20 @@ const Header = () => {
                         onClick={toggleDrawer}
                     />
                 </div>
+{/* Logo inside drawer */}
+<div className="flex justify-center mb-6">
+  <Link href={`/${currentLocale}`} onClick={toggleDrawer}>
+    <Image
+      src="/assets/images/logo.svg"
+      alt="Logo"
+      width={180}
+      height={60}
+      className="w-auto h-auto max-w-[160px]"
+    />
+  </Link>
+</div>
 
+<div className="flex justify-center mb-6 pb-4 border-b"></div>
                 {/* Menu Items */}
                 <nav className="mt-8">
                     <ul className="space-y-6 text-lg">
