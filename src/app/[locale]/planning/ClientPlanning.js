@@ -48,7 +48,7 @@ export default function ClientPlannig({ data }) {
 
                     {/* Text - 6 columns */}
                     <div className="col-span-12 md:col-span-7 text-center md:text-left">
-                        <p className="main_text ff_fira text-lg">
+                        <p className="main_text ff_poppins text-lg">
                             {service.service_long_description ?? 'N/A'}
                         </p>
                     </div>

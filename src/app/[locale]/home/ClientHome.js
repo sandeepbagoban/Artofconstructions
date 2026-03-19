@@ -76,7 +76,7 @@ export default function ClientHome({ data }) {
                         </h1>
 
                         {/* Description */}
-                        <p className="secondary_text mb-6 ff_fira text-sm sm:text-base lg:text-lg">
+                        <p className="secondary_text mb-6 ff_poppins text-sm sm:text-base lg:text-sm">
                             {banner_data.banner_section_description || "Description"}
                         </p>
 
@@ -117,7 +117,7 @@ export default function ClientHome({ data }) {
                         SERVICES
                     </h2>
                     <p
-                        className="sm:col-span-5 ff_fira main_text text-center sm:text-right text-sm sm:text-base lg:text-[16px] tracking-wide"
+                        className="sm:col-span-5 ff_poppins main_text text-center sm:text-right text-sm sm:text-base lg:text-[16px] tracking-wide"
                         data-aos="fade-left"
                     >
                         We Design Spaces That Inspire And Endure.
@@ -150,7 +150,7 @@ export default function ClientHome({ data }) {
                                     />
                                 </div>
                             </Link>
-                            <p className="mt-2 py-4 text-sm sm:text-base lg:text-[16px] ff_fira main_text text-center sm:text-left">
+                            <p className="mt-2 py-4 text-sm sm:text-base lg:text-[16px] ff_poppins main_text text-center sm:text-left">
                                 {service.service_title}
                             </p>
                         </div>
@@ -185,7 +185,7 @@ export default function ClientHome({ data }) {
                         >
                             {/* For second card, show description on top */}
                             {index === 1 && (
-                                <p className="mb-4 py-4 text-base sm:text-lg main_text ff_fira w-full max-w-[500px]">
+                                <p className="mb-4 py-4 text-base sm:text-lg main_text ff_poppins w-full max-w-[500px]">
                                     {service.home_page_project_short_description}
                                 </p>
                             )}
@@ -194,7 +194,7 @@ export default function ClientHome({ data }) {
                                 {/* Title for all EXCEPT the 2nd card */}
                                 {index !== 1 && (
                                     <div className="my-4 w-full relative overflow-hidden">
-                                        <p className="text-lg main_text ff_fira z-10 relative transition-all duration-500 ease-in-out">
+                                        <p className="text-lg main_text ff_poppins z-10 relative transition-all duration-500 ease-in-out">
                                             {service.home_page_project_title}
                                         </p>
                                         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full flex justify-end items-center">
@@ -240,7 +240,7 @@ export default function ClientHome({ data }) {
                                 {/* Title for ONLY the 2nd card */}
                                 {index === 1 && (
                                     <div className="mt-4 w-full relative overflow-hidden">
-                                        <p className="text-lg main_text ff_fira z-10 relative transition-all duration-500 ease-in-out">
+                                        <p className="text-lg main_text ff_poppins z-10 relative transition-all duration-500 ease-in-out">
                                             {service.home_page_project_title}
                                         </p>
                                         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full flex justify-end items-center">
@@ -258,7 +258,7 @@ export default function ClientHome({ data }) {
 
                             {/* Description for other cards */}
                             {index !== 1 && (
-                                <p className="mt-2 py-4 text-base sm:text-lg main_text ff_fira w-full max-w-[500px]">
+                                <p className="mt-2 py-4 text-base sm:text-lg main_text ff_poppins w-full max-w-[500px]">
                                     {service.home_page_project_short_description}
                                 </p>
                             )}

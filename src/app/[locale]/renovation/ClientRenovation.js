@@ -49,7 +49,7 @@ export default function ClientRenovation({ data }) {
                     )}
 
                     {service.service_long_description && (
-                        <p className="max-w-[850px] w-full main_text ff_fira md:    py-6 text-lg text-gray-700 text-center md:text-left leading-relaxed">
+                        <p className="max-w-[850px] w-full main_text ff_poppins md:    py-6 text-lg text-gray-700 text-center md:text-left leading-relaxed">
                             {service.service_long_description}
                         </p>
                     )}

@@ -51,7 +51,7 @@ export default function ClientDemolition({ data }) {
 
                     {/* Description */}
                     <div className="w-full max-w-[850px]">
-                        <p className="main_text ff_fira text-base sm:text-lg md:py-6 text-center md:text-left">
+                        <p className="main_text ff_poppins text-base sm:text-lg md:py-6 text-center md:text-left">
                             {service.service_long_description ?? 'N/A'}
                         </p>
                     </div>
@@ -105,7 +105,7 @@ export default function ClientDemolition({ data }) {
                                     />
                                 </div>
                             </div>
-                            <p className="text-base sm:text-lg main_text ff_fira text-center">
+                            <p className="text-base sm:text-lg main_text ff_poppins text-center">
                                 Looking for demolition experts? Look no further, our services include:
                                 Application and verification of demolition permits, asbestos inspection, dismantling, deconstruction and demolition, cutting of debris, ecological sorting and removal of rubble, demolition waste and large bulky items.
                             </p>
@@ -122,7 +122,7 @@ export default function ClientDemolition({ data }) {
                                     />
                                 </div>
                             </div>
-                            <p className="text-base sm:text-lg main_text ff_fira text-center">
+                            <p className="text-base sm:text-lg main_text ff_poppins text-center">
                                 The demolition phase of any renovation or construction project is critical and requires experienced and qualified personnel.
                                 We respond quickly and responsibly, and our teams are trained to meet the demands of these services.
                                 Call on us and you'll be guaranteed speed, safety, and expertise!

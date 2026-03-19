@@ -38,7 +38,7 @@ export default function CookieConsent() {
                 <h2 className="text-2xl sm:text-3xl heading_text font-[400] mb-4">
                     🍪 Cookie Consent
                 </h2>
-                <p className="text-sm sm:text-base main_text ff_fira mb-6">
+                <p className="text-sm sm:text-base main_text ff_poppins mb-6">
                     We use cookies to improve your experience. By continuing, you agree
                     to our use of cookies.
                 </p>

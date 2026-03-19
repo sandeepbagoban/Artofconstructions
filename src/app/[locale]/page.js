@@ -10,8 +10,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function HomePage({ params }) {
-    const { locale } = params;
+    const { locale } = await params;
+
     const data = await homePageData(locale);
 
     return <ClientHome data={data} />;
 }
+

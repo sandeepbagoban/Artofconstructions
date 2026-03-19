@@ -2,20 +2,20 @@
 
 /* === Custom Font Faces === */
 @font-face {
-  font-family: 'Fira Mono';
-  src: url('/fonts/Fira_Mono/FiraMono-Regular.ttf') format('truetype');
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Fira Mono';
-  src: url('/fonts/Fira_Mono/FiraMono-Medium.ttf') format('truetype');
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Fira Mono';
-  src: url('/fonts/Fira_Mono/FiraMono-Bold.ttf') format('truetype');
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
@@ -32,9 +32,9 @@
   --foreground: #171717;
 
   --font-sans: 'Publico Banner', serif;
-  --font-mono: 'Fira Mono', monospace;
+  --font-mono: 'Poppins', monospace;
 
-  --heading-color : #2B5450;
+  --heading-color : #000000;
   --text-color : #302543;
   --text2-color : #00102F;
 }
@@ -59,8 +59,8 @@ body {
   font-family: 'Publico Banner', serif;
 }
 
-.ff_fira {
-  font-family: 'Fira Mono', monospace;
+.ff_poppins {
+  font-family: 'Poppins', monospace;
 }
 
 

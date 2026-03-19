@@ -33,12 +33,12 @@ export default function ProjectDetailGallery({ projectImages, subProject }) {
             {/* Back Button */}
             <button
                 onClick={() => router.back()}
-                className="mb-6 py-2 text-[#2B5450] cursor-pointer text-2xl"
+                className="mb-6 py-2 text-[#000000] cursor-pointer text-2xl"
             >
                 Back to projects
             </button>
 
-            <h1 className="text-center mb-4 text-[#2B5450] text-2xl ff_fira">{subProject.project_type_name}</h1>
+            <h1 className="text-center mb-4 text-[#000000] text-2xl ff_poppins">{subProject.project_type_name}</h1>
 
             {/* Grid container */}
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -68,7 +68,7 @@ export default function ProjectDetailGallery({ projectImages, subProject }) {
                                 opacity-0 group-hover:opacity-100 
                                 transition-all duration-500 ease-out"
                         >
-                            <span className="text-[#2B5450] font-semibold text-sm sm:text-lg md:text-xl text-center leading-snug">
+                            <span className="text-[#000000] font-semibold text-sm sm:text-lg md:text-xl text-center leading-snug">
                                 {slide.title}
                             </span>
                         </div>

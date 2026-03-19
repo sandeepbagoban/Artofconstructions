@@ -372,10 +372,6 @@
     padding-block: 0;
   }
 
-  ::-webkit-calendar-picker-indicator {
-    line-height: 1;
-  }
-
   :-moz-ui-invalid {
     box-shadow: none;
   }
@@ -1334,10 +1330,6 @@
     color: #1f2937;
   }
 
-  .text-\[\#2B5450\] {
-    color: #2b5450;
-  }
-
   .text-\[\#333\] {
     color: #333;
   }
@@ -1476,7 +1468,7 @@
   }
 
   .transition {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
@@ -2219,6 +2211,20 @@
   }
 
   @media (min-width: 64rem) {
+    .lg\:text-sm {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .lg\:text-xs {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+
+  @media (min-width: 64rem) {
     .lg\:text-\[16px\] {
       font-size: 16px;
     }
@@ -2256,22 +2262,22 @@
 }
 
 @font-face {
-  font-family: Fira Mono;
-  src: url("/fonts/Fira_Mono/FiraMono-Regular.ttf") format("truetype");
+  font-family: Poppins;
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Fira Mono;
-  src: url("/fonts/Fira_Mono/FiraMono-Medium.ttf") format("truetype");
+  font-family: Poppins;
+  src: url("/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Fira Mono;
-  src: url("/fonts/Fira_Mono/FiraMono-Bold.ttf") format("truetype");
+  font-family: Poppins;
+  src: url("/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -2287,8 +2293,8 @@
   --background: #fff;
   --foreground: #171717;
   --font-sans: "Publico Banner", serif;
-  --font-mono: "Fira Mono", monospace;
-  --heading-color: #2b5450;
+  --font-mono: "Poppins", monospace;
+  --heading-color: #000;
   --text-color: #302543;
   --text2-color: #00102f;
 }
@@ -2310,8 +2316,8 @@ body {
   font-family: Publico Banner, serif;
 }
 
-.ff_fira {
-  font-family: Fira Mono, monospace;
+.ff_poppins {
+  font-family: Poppins, monospace;
 }
 
 .heading_text {

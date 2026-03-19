@@ -63,14 +63,14 @@ const Header = () => {
                 <div className="flex items-center gap-3 text-black text-sm sm:text-base">
                     <Link
                         href={`/fr/${pathWithoutLocale}`}
-                        className={`ff_fira font-normal cursor-pointer hover:text-blue-600 ${currentLocale === "fr" ? "font-bold text-blue-600" : ""
+                        className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 ${currentLocale === "fr" ? "font-bold text-blue-600" : ""
                             }`}
                     >
                         FR
                     </Link>
                     <Link
                         href={`/en/${pathWithoutLocale}`}
-                        className={`ff_fira font-normal cursor-pointer hover:text-blue-600 ${currentLocale === "en" ? "font-bold text-blue-600" : ""
+                        className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 ${currentLocale === "en" ? "font-bold text-blue-600" : ""
                             }`}
                     >
                         ENG
@@ -97,7 +97,7 @@ const Header = () => {
                         <li>
                             <Link
                                 href={`/${currentLocale}`}
-                                className="block hover:text-blue-600 transition-colors main_text ff_fira"
+                                className="block hover:text-blue-600 transition-colors main_text ff_poppins"
                                 onClick={toggleDrawer}
                             >
                                 Home
@@ -106,7 +106,7 @@ const Header = () => {
                         <li>
                             <Link
                                 href={`/${currentLocale}/about`}
-                                className="block hover:text-blue-600 transition-colors main_text ff_fira"
+                                className="block hover:text-blue-600 transition-colors main_text ff_poppins"
                                 onClick={toggleDrawer}
                             >
                                 About Us
@@ -120,7 +120,7 @@ const Header = () => {
                             <button
                                 type="button"
                                 onClick={() => setProjectsOpen((prev) => !prev)}
-                                className="w-full flex items-center justify-between hover:text-blue-600 transition-colors main_text ff_fira focus:outline-none"
+                                className="w-full flex items-center justify-between hover:text-blue-600 transition-colors main_text ff_poppins focus:outline-none"
                             >
                                 <span>Services</span>
                                 <svg
@@ -141,7 +141,7 @@ const Header = () => {
                                     <li>
                                         <Link
                                             href={`/${currentLocale}/renovation`}
-                                            className="block px-2 py-2 hover:bg-gray-100 rounded main_text ff_fira"
+                                            className="block px-2 py-2 hover:bg-gray-100 rounded main_text ff_poppins"
                                             onClick={() => {
                                                 toggleDrawer();
                                                 setProjectsOpen(false);
@@ -153,7 +153,7 @@ const Header = () => {
                                     <li>
                                         <Link
                                             href={`/${currentLocale}/planning`}
-                                            className="block px-2 py-2 hover:bg-gray-100 rounded main_text ff_fira"
+                                            className="block px-2 py-2 hover:bg-gray-100 rounded main_text ff_poppins"
                                             onClick={() => {
                                                 toggleDrawer();
                                                 setProjectsOpen(false);
@@ -165,7 +165,7 @@ const Header = () => {
                                     <li>
                                         <Link
                                             href={`/${currentLocale}/demolition`}
-                                            className="block px-2 py-2 hover:bg-gray-100 rounded main_text ff_fira"
+                                            className="block px-2 py-2 hover:bg-gray-100 rounded main_text ff_poppins"
                                             onClick={() => {
                                                 toggleDrawer();
                                                 setProjectsOpen(false);
@@ -181,7 +181,7 @@ const Header = () => {
                             <Link
                                 href={`/${currentLocale}/projects/residential`}
 
-                                className="block hover:text-blue-600 transition-colors main_text ff_fira"
+                                className="block hover:text-blue-600 transition-colors main_text ff_poppins"
                                 onClick={toggleDrawer}
                             >
                                 Projects
@@ -192,7 +192,7 @@ const Header = () => {
                         <li>
                             <Link
                                 href={`/${currentLocale}/contact`}
-                                className="block hover:text-blue-600 transition-colors main_text ff_fira"
+                                className="block hover:text-blue-600 transition-colors main_text ff_poppins"
                                 onClick={toggleDrawer}
                             >
                                 Contact Us

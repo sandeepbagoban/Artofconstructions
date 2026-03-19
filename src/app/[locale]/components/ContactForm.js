@@ -182,7 +182,7 @@ const ContactForm = ({ image }) => {
                     </div>
                 )}
 
-                <form className="space-y-6 ff_fira mt-8 sm:mt-10" onSubmit={handleSubmit}>
+                <form className="space-y-6 ff_poppins mt-8 sm:mt-10" onSubmit={handleSubmit}>
                     {/* Row 1 */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                         <div>

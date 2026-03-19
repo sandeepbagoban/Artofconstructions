@@ -83,7 +83,7 @@ export default function ClientAbout({ data }) {
                     {/* Right Text */}
                     {bannerData?.banner_section_description && (
                         <div className="text-gray-700 leading-relaxed tracking-wide text-sm sm:text-base lg:text-lg">
-                            <p className="mb-4 main_text ff_fira">
+                            <p className="mb-4 main_text ff_poppins">
                                 {bannerData.banner_section_description}
                             </p>
                         </div>
@@ -139,7 +139,7 @@ export default function ClientAbout({ data }) {
                     <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
                         <Link
                             href="/request-quote"
-                            className="bg-[#F3C76C] text-sm sm:text-md px-5 sm:px-6 py-2.5 sm:py-3 rounded-sm text-black flex items-center gap-2 transition cursor-pointer ff_fira hover:bg-[#e0b85c]"
+                            className="bg-[#F3C76C] text-sm sm:text-md px-5 sm:px-6 py-2.5 sm:py-3 rounded-sm text-black flex items-center gap-2 transition cursor-pointer ff_poppins hover:bg-[#e0b85c]"
                         >
                             Request A QUOTE <FiArrowRight className="text-base sm:text-lg" />
                         </Link>

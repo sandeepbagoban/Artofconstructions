@@ -138,14 +138,14 @@ export default function ClientProjectsGallery({ data, locale }) {
                                 <div className="w-full md:w-1/2 flex flex-col justify-between">
                                     {/* Top Section (title, description, date) */}
                                     <div className="space-y-3">
-                                        <h3 className="text-[24px] font-medium ff_fira text-[#2B5450]">
+                                        <h3 className="text-[24px] font-medium ff_poppins text-[#000000]">
                                             {proj.name || "Project Name"}
                                         </h3>
-                                        <p className="text-[18px] font-normal ff_fira text-[#464646]">
+                                        <p className="text-[18px] font-normal ff_poppins text-[#464646]">
                                             Project Detail: {proj.description || "No description"}
                                         </p>
                                         {proj.date && (
-                                            <p className="text-[18px] font-normal ff_fira text-[#464646]">
+                                            <p className="text-[18px] font-normal ff_poppins text-[#464646]">
                                                 Project Date : {proj.date}
                                             </p>
                                         )}
@@ -155,7 +155,7 @@ export default function ClientProjectsGallery({ data, locale }) {
                                     {/* Bottom Section (button) */}
                                     <Link
                                         href={`/${locale}/projects/${proj.slug}`}
-                                        className="mt-4 inline-flex items-center gap-2 bg-[#F3C76C] px-8 py-3 text-md ff_fira text-[#000000] self-start"
+                                        className="mt-4 inline-flex items-center gap-2 bg-[#F3C76C] px-8 py-3 text-md ff_poppins text-[#000000] self-start"
                                     >
                                         View Project
                                         <Image

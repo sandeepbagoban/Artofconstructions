@@ -163,7 +163,7 @@ function ClientHome({ data }) {
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "secondary_text mb-6 ff_fira text-sm sm:text-base lg:text-lg",
+                                className: "secondary_text mb-6 ff_poppins text-sm sm:text-base lg:text-sm",
                                 children: banner_data.banner_section_description || "Description"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/[locale]/home/ClientHome.js",
@@ -237,7 +237,7 @@ function ClientHome({ data }) {
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "sm:col-span-5 ff_fira main_text text-center sm:text-right text-sm sm:text-base lg:text-[16px] tracking-wide",
+                                className: "sm:col-span-5 ff_poppins main_text text-center sm:text-right text-sm sm:text-base lg:text-[16px] tracking-wide",
                                 "data-aos": "fade-left",
                                 children: "We Design Spaces That Inspire And Endure."
                             }, void 0, false, {
@@ -288,7 +288,7 @@ function ClientHome({ data }) {
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-2 py-4 text-sm sm:text-base lg:text-[16px] ff_fira main_text text-center sm:text-left",
+                                        className: "mt-2 py-4 text-sm sm:text-base lg:text-[16px] ff_poppins main_text text-center sm:text-left",
                                         children: service.service_title
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/home/ClientHome.js",
@@ -342,7 +342,7 @@ function ClientHome({ data }) {
                                 "data-aos-delay": index * 200,
                                 children: [
                                     index === 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mb-4 py-4 text-base sm:text-lg main_text ff_fira w-full max-w-[500px]",
+                                        className: "mb-4 py-4 text-base sm:text-lg main_text ff_poppins w-full max-w-[500px]",
                                         children: service.home_page_project_short_description
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/home/ClientHome.js",
@@ -356,7 +356,7 @@ function ClientHome({ data }) {
                                                 className: "my-4 w-full relative overflow-hidden",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-lg main_text ff_fira z-10 relative transition-all duration-500 ease-in-out",
+                                                        className: "text-lg main_text ff_poppins z-10 relative transition-all duration-500 ease-in-out",
                                                         children: service.home_page_project_title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/home/ClientHome.js",
@@ -457,7 +457,7 @@ function ClientHome({ data }) {
                                                 className: "mt-4 w-full relative overflow-hidden",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-lg main_text ff_fira z-10 relative transition-all duration-500 ease-in-out",
+                                                        className: "text-lg main_text ff_poppins z-10 relative transition-all duration-500 ease-in-out",
                                                         children: service.home_page_project_title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/[locale]/home/ClientHome.js",
@@ -495,7 +495,7 @@ function ClientHome({ data }) {
                                         columnNumber: 29
                                     }, this),
                                     index !== 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-2 py-4 text-base sm:text-lg main_text ff_fira w-full max-w-[500px]",
+                                        className: "mt-2 py-4 text-base sm:text-lg main_text ff_poppins w-full max-w-[500px]",
                                         children: service.home_page_project_short_description
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/[locale]/home/ClientHome.js",

@@ -13,7 +13,7 @@ const Heading = ({ title, description }) => {
             {/* Description */}
             {description && (
                 <div className="flex justify-center">
-                    <p className="text-sm sm:text-base md:text-lg lg:text-[16px] main_text ff_fira w-full sm:w-[80%] md:w-[70%] lg:w-[60%] capitalize">
+                    <p className="text-sm sm:text-base md:text-lg lg:text-[16px] main_text ff_poppins w-full sm:w-[80%] md:w-[70%] lg:w-[60%] capitalize">
                         {description}
                     </p>
                 </div>
