@@ -106,7 +106,7 @@ function ClientHome({ data }) {
                         src: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DOMAIN"]}${banner_data.main_banner_image}`,
                         alt: "image",
                         fill: true,
-                        className: "object-cover",
+                        className: "object-cover ",
                         priority: true
                     }, void 0, false, {
                         fileName: "[project]/src/app/[locale]/home/ClientHome.js",
@@ -180,7 +180,7 @@ function ClientHome({ data }) {
                                     fill: true,
                                     className: "object-cover",
                                     priority: true,
-                                    sizes: "(max-width: 768px) 100vw, 50vw"
+                                    sizes: "(max-width: 768px) 100vw, 100vw"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/[locale]/home/ClientHome.js",
                                     lineNumber: 89,

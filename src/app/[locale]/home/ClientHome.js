@@ -43,7 +43,7 @@ export default function ClientHome({ data }) {
                     src={`${DOMAIN}${banner_data.main_banner_image}`}
                     alt="image"
                     fill
-                    className="object-cover"
+                    className="object-cover "
                     priority
                 />
 
@@ -92,7 +92,7 @@ export default function ClientHome({ data }) {
                                 fill
                                 className="object-cover"
                                 priority
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="(max-width: 768px) 100vw, 100vw"
                             />
                         </div>
                     </div>

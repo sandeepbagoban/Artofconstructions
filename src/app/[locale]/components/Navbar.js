@@ -34,7 +34,7 @@ const Header = () => {
   ${scrolled ? 'bg-white/60 backdrop-blur-md shadow-md' : 'bg-transparent'}`}
 >
   {/* Left: Menu + Logo */}
-  <div className="flex items-center gap-3">
+  <div className="flex items-center gap-6">
     <div
       className="text-2xl text-gray-800 cursor-pointer"
       onClick={toggleDrawer}

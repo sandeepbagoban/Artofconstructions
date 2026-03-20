@@ -1,4 +1,10 @@
 {
+  "/[locale]/about/page": "app/[locale]/about/page.js",
+  "/[locale]/demolition/page": "app/[locale]/demolition/page.js",
   "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/planning/page": "app/[locale]/planning/page.js",
+  "/[locale]/projects/[slug]/page": "app/[locale]/projects/[slug]/page.js",
+  "/[locale]/renovation/page": "app/[locale]/renovation/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js"
 }
