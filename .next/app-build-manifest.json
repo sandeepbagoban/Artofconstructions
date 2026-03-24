@@ -22,28 +22,17 @@
       "static/css/app/[locale]/page.css",
       "static/chunks/app/[locale]/page.js"
     ],
-    "/[locale]/projects/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/[locale]/projects/[slug]/page.css",
-      "static/chunks/app/[locale]/projects/[slug]/page.js"
-    ],
     "/[locale]/renovation/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/[locale]/renovation/page.css",
       "static/chunks/app/[locale]/renovation/page.js"
     ],
-    "/[locale]/about/page": [
+    "/[locale]/projects/[slug]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/[locale]/about/page.css",
-      "static/chunks/app/[locale]/about/page.js"
-    ],
-    "/[locale]/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[locale]/contact/page.js"
+      "static/css/app/[locale]/projects/[slug]/page.css",
+      "static/chunks/app/[locale]/projects/[slug]/page.js"
     ]
   }
 }
