@@ -13,7 +13,7 @@ import {
 
 // Create a reusable axios instance
 // const api = axios.create({
-//     baseURL: process.env.NEXT_PUBLIC_API_URL || "https://artofconstructions.vercel.app/theArt/public/",
+//     baseURL: process.env.NEXT_PUBLIC_API_URL || "https://www.cms.artconstruction.be/theArt/public/",
 // });
 
 
@@ -116,6 +116,7 @@ export const submitContactForm = async (formData) => {
             subject: formData.subject,
             message: formData.message,
         });
+        console.log("Contact form submitted successfully:", response.data);
         return response.data;
     } catch (error) {
         console.error("Contact form submission error:", error.message);

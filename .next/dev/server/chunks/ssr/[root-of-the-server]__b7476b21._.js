@@ -104,7 +104,7 @@ const BASEURL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$
 });
 const HOMEPAGE = "home-page";
 const ABOUTUS = "about-us";
-const CONTACTUS = "/contact-us";
+const CONTACTUS = "contact-us";
 const RENOVATION = "service-details/renovation";
 const PLANNING = "service-details/planning";
 const DEMOLITION = "service-details/demolition";
@@ -233,6 +233,7 @@ const submitContactForm = async (formData)=>{
             subject: formData.subject,
             message: formData.message
         });
+        console.log("Contact form submitted successfully:", response.data);
         return response.data;
     } catch (error) {
         console.error("Contact form submission error:", error.message);
@@ -294,7 +295,7 @@ function generateSEOMetadata(data, locale = "en") {
     const description = locale === "fr" ? source?.french_page_meta_description || source?.service_detail_meta_description || "Default Description" : source?.page_meta_description || source?.service_detail_meta_description || "Default Description";
     const keywords = locale === "fr" ? source?.french_page_meta_keywords || source?.service_detail_meta_keywords || "default, keywords" : source?.page_meta_keywords || source?.service_detail_meta_keywords || "default, keywords";
     const robots = locale === "fr" ? source?.french_page_meta_robots || source?.service_detail_meta_robots || "index, follow" : source?.page_meta_robots || source?.service_detail_meta_robots || "index, follow";
-    const canonical = locale === "fr" ? source?.french_page_meta_canonical || source?.service_detail_meta_canonical || `https://artofconstructions.vercel.app/${locale}/` : source?.page_meta_canonical || source?.service_detail_meta_canonical || `https://artofconstructions.vercel.app/${locale}/`;
+    const canonical = locale === "fr" ? source?.french_page_meta_canonical || source?.service_detail_meta_canonical || `https://www.cms.artconstruction.be/${locale}/` : source?.page_meta_canonical || source?.service_detail_meta_canonical || `https://www.cms.artconstruction.be/${locale}/`;
     const ogTitle = locale === "fr" ? source?.french_page_meta_og_title || source?.service_detail_meta_og_title || title : source?.page_meta_og_title || source?.service_detail_meta_og_title || title;
     const ogDescription = locale === "fr" ? source?.french_page_meta_og_description || source?.service_detail_meta_og_description || description : source?.page_meta_og_description || source?.service_detail_meta_og_description || description;
     const ogImage = locale === "fr" ? source?.french_page_meta_og_image ? [

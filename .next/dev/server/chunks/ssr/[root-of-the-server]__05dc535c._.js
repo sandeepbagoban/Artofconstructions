@@ -104,7 +104,7 @@ const BASEURL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$
 });
 const HOMEPAGE = "home-page";
 const ABOUTUS = "about-us";
-const CONTACTUS = "/contact-us";
+const CONTACTUS = "contact-us";
 const RENOVATION = "service-details/renovation";
 const PLANNING = "service-details/planning";
 const DEMOLITION = "service-details/demolition";
@@ -233,6 +233,7 @@ const submitContactForm = async (formData)=>{
             subject: formData.subject,
             message: formData.message
         });
+        console.log("Contact form submitted successfully:", response.data);
         return response.data;
     } catch (error) {
         console.error("Contact form submission error:", error.message);
@@ -328,7 +329,7 @@ function generateProjectSEOMetadata(data, locale = "en") {
     const description = locale === "fr" ? project?.french_project_meta_description || project?.project_meta_description || "Default Project Description" : project?.project_meta_description || "Default Project Description";
     const keywords = locale === "fr" ? project?.french_project_meta_keywords || project?.project_meta_keywords || "default, keywords" : project?.project_meta_keywords || "default, keywords";
     const robots = locale === "fr" ? project?.french_project_meta_robots || project?.project_meta_robots || "index, follow" : project?.project_meta_robots || "index, follow";
-    const canonical = locale === "fr" ? project?.french_project_meta_canonical || project?.project_meta_canonical || `https://artofconstructions.vercel.app/${locale}/projects/${data?.banner_data?.project_slug}` : project?.project_meta_canonical || `https://artofconstructions.vercel.app/${locale}/projects/${data?.banner_data?.project_slug}`;
+    const canonical = locale === "fr" ? project?.french_project_meta_canonical || project?.project_meta_canonical || `https://www.cms.artconstruction.be/${locale}/projects/${data?.banner_data?.project_slug}` : project?.project_meta_canonical || `https://www.cms.artconstruction.be/${locale}/projects/${data?.banner_data?.project_slug}`;
     const ogTitle = locale === "fr" ? project?.french_project_meta_og_title || project?.project_meta_og_title || title : project?.project_meta_og_title || title;
     const ogDescription = locale === "fr" ? project?.french_project_meta_og_description || project?.project_meta_og_description || description : project?.project_meta_og_description || description;
     const ogImage = locale === "fr" ? project?.french_project_meta_og_image ? [
@@ -387,48 +388,28 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$axios
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f5b$locale$5d2f$projects$2f$ClientProjects$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/[locale]/projects/ClientProjects.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f5b$locale$5d2f$projects$2f$ProjectDetailGallery$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/[locale]/projects/ProjectDetailGallery.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$generateProjectSEOMetadata$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/utils/generateProjectSEOMetadata.js [app-rsc] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$api$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/next/dist/api/navigation.react-server.js [app-rsc] (ecmascript) <locals>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/components/navigation.react-server.js [app-rsc] (ecmascript)");
 ;
 ;
 ;
 ;
 ;
-;
-function parseParams(params) {
-    try {
-        if (params.value) {
-            return JSON.parse(params.value);
-        }
-        return params;
-    } catch (err) {
-        console.error("Failed to parse params.value", err);
-        return {};
-    }
-}
 async function generateMetadata({ params }) {
-    const parsed = parseParams(params);
-    const { locale, slug } = parsed;
-    if (!slug) {
-        return {};
-    }
+    const { locale, slug } = await params;
     const slugLower = slug.toLowerCase();
     let data;
     let isDetailPage = false;
     if (slugLower === "residential" || slugLower === "horeca-commercial" || slugLower === "nouvelles-constructions" || slugLower === "residentielle" || slugLower === "horeca-et-commerce") {
+        // Projects listing page
         data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["projectsPageData"])(locale, slugLower);
     } else {
+        // Project detail page
         data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["projectDetailData"])(locale, slugLower);
         isDetailPage = true;
     }
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$generateProjectSEOMetadata$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["generateProjectSEOMetadata"])(data?.data, locale, isDetailPage);
 }
 async function ProjectPage({ params }) {
-    const parsed = parseParams(params);
-    const { locale, slug } = parsed;
-    if (!slug) {
-        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["notFound"])(); // Next.js 404
-    }
+    const { locale, slug } = await params;
     const slugLower = slug.toLowerCase();
     let data;
     let isDetailPage = false;
@@ -445,15 +426,15 @@ async function ProjectPage({ params }) {
             slug: slugLower
         }, void 0, false, {
             fileName: "[project]/src/app/[locale]/projects/[slug]/page.js",
-            lineNumber: 76,
-            columnNumber: 9
+            lineNumber: 53,
+            columnNumber: 17
         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f5b$locale$5d2f$projects$2f$ClientProjects$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
             data: data,
             locale: locale
         }, void 0, false, {
             fileName: "[project]/src/app/[locale]/projects/[slug]/page.js",
-            lineNumber: 82,
-            columnNumber: 9
+            lineNumber: 59,
+            columnNumber: 17
         }, this)
     }, void 0, false);
 }

@@ -24,8 +24,8 @@ export function generateAboutSEOMetadata(data, locale = "en") {
 
     const canonical =
         locale === "fr"
-            ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/about`
-            : banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/about`;
+            ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://www.cms.artconstruction.be/${locale}/about`
+            : banner?.page_meta_canonical || `https://www.cms.artconstruction.be/${locale}/about`;
 
     const ogTitle =
         locale === "fr"

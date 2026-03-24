@@ -104,7 +104,7 @@ const BASEURL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$
 });
 const HOMEPAGE = "home-page";
 const ABOUTUS = "about-us";
-const CONTACTUS = "/contact-us";
+const CONTACTUS = "contact-us";
 const RENOVATION = "service-details/renovation";
 const PLANNING = "service-details/planning";
 const DEMOLITION = "service-details/demolition";
@@ -233,6 +233,7 @@ const submitContactForm = async (formData)=>{
             subject: formData.subject,
             message: formData.message
         });
+        console.log("Contact form submitted successfully:", response.data);
         return response.data;
     } catch (error) {
         console.error("Contact form submission error:", error.message);
@@ -290,7 +291,7 @@ function generateAboutSEOMetadata(data, locale = "en") {
     const description = locale === "fr" ? banner?.french_page_meta_description || banner?.page_meta_description || "Default About Description" : banner?.page_meta_description || "Default About Description";
     const keywords = locale === "fr" ? banner?.french_page_meta_keywords || banner?.page_meta_keywords || "default, about, keywords" : banner?.page_meta_keywords || "default, about, keywords";
     const robots = locale === "fr" ? banner?.french_page_meta_robots || banner?.page_meta_robots || "index, follow" : banner?.page_meta_robots || "index, follow";
-    const canonical = locale === "fr" ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/about` : banner?.page_meta_canonical || `https://artofconstructions.vercel.app/${locale}/about`;
+    const canonical = locale === "fr" ? banner?.french_page_meta_canonical || banner?.page_meta_canonical || `https://www.cms.artconstruction.be/${locale}/about` : banner?.page_meta_canonical || `https://www.cms.artconstruction.be/${locale}/about`;
     const ogTitle = locale === "fr" ? banner?.french_page_meta_og_title || banner?.page_meta_og_title || title : banner?.page_meta_og_title || title;
     const ogDescription = locale === "fr" ? banner?.french_page_meta_og_description || banner?.page_meta_og_description || description : banner?.page_meta_og_description || description;
     const ogImage = locale === "fr" ? banner?.french_page_meta_og_image ? [
@@ -353,18 +354,18 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$gener
 ;
 ;
 async function generateMetadata({ params }) {
-    const { locale } = params;
+    const { locale } = await params; // ✅ IMPORTANT
     const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["aboutPageData"])(locale);
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$generateAboutSEOMetadata$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["generateAboutSEOMetadata"])(res?.data, locale);
 }
 async function AboutPage({ params }) {
-    const { locale } = params;
+    const { locale } = await params; // ✅ IMPORTANT
     const data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$utils$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["aboutPageData"])(locale);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f5b$locale$5d2f$about$2f$ClientAbout$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
         data: data
     }, void 0, false, {
         fileName: "[project]/src/app/[locale]/about/page.js",
-        lineNumber: 14,
+        lineNumber: 16,
         columnNumber: 10
     }, this);
 }

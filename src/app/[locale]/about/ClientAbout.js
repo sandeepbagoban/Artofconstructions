@@ -41,7 +41,7 @@ export default function ClientAbout({ data }) {
                         fill
                         className="object-cover object-center"
                         priority
-                        sizes="100vw"
+                        sizes="50vw"
                     />
                 </div>
             )}

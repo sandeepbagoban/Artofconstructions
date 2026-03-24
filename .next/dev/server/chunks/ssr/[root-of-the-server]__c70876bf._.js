@@ -167,7 +167,7 @@ const BASEURL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$
 });
 const HOMEPAGE = "home-page";
 const ABOUTUS = "about-us";
-const CONTACTUS = "/contact-us";
+const CONTACTUS = "contact-us";
 const RENOVATION = "service-details/renovation";
 const PLANNING = "service-details/planning";
 const DEMOLITION = "service-details/demolition";
@@ -296,6 +296,7 @@ const submitContactForm = async (formData)=>{
             subject: formData.subject,
             message: formData.message
         });
+        console.log("Contact form submitted successfully:", response.data);
         return response.data;
     } catch (error) {
         console.error("Contact form submission error:", error.message);
@@ -524,7 +525,7 @@ const ContactForm = ({ image })=>{
                     src: image,
                     alt: "Banner",
                     width: 1920,
-                    height: 600,
+                    height: 400,
                     className: "w-full h-auto object-cover",
                     priority: true
                 }, void 0, false, {
@@ -783,7 +784,7 @@ function ClientAbout({ data }) {
                     fill: true,
                     className: "object-cover object-center",
                     priority: true,
-                    sizes: "100vw"
+                    sizes: "50vw"
                 }, void 0, false, {
                     fileName: "[project]/src/app/[locale]/about/ClientAbout.js",
                     lineNumber: 38,

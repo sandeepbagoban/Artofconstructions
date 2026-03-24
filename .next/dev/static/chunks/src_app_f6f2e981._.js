@@ -107,7 +107,7 @@ const BASEURL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$
 });
 const HOMEPAGE = "home-page";
 const ABOUTUS = "about-us";
-const CONTACTUS = "/contact-us";
+const CONTACTUS = "contact-us";
 const RENOVATION = "service-details/renovation";
 const PLANNING = "service-details/planning";
 const DEMOLITION = "service-details/demolition";
