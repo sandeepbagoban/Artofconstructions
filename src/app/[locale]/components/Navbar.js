@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,79 +7,62 @@ import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
 
   const pathname = usePathname();
   const currentLocale = pathname.split("/")[1] || "en";
   const pathWithoutLocale = pathname.split("/").slice(2).join("/") || "";
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const toggleDrawer = () => setIsOpen(!isOpen);
 
   return (
     <>
-      {/* Top Navbar */}
-      <div
-        className={`w-full flex items-center justify-between px-4 py-4 fixed top-0 z-50 transition-all duration-500
-          ${
-            scrolled
-              ? "bg-gray-300/80 backdrop-blur-lg shadow-md"
-              : "bg-gray-200/80 backdrop-blur-md"
-          }`}
-      >
-        {/* Left: Menu Icon + Logo */}
-        <div className="flex items-center gap-4">
-          <div
-            className="p-2 rounded-full transition-colors cursor-pointer"
-            onClick={toggleDrawer}
-          >
-            <Image
-              src="/assets/images/menu_icon.svg"
-              alt="Menu"
-              width={24}
-              height={24}
-            />
-          </div>
+      {/* ── Navbar: always fully transparent, sits on top of hero image ── */}
+      <div className="w-full flex items-center justify-between px-6 sm:px-10 py-5 fixed top-0 z-50">
 
+        {/* Left: Hamburger */}
+        <button
+          onClick={toggleDrawer}
+          className="p-1 cursor-pointer"
+          aria-label="Open menu"
+        >
+          <Image
+            src="/assets/images/menu_icon.svg"
+            alt="Menu"
+            width={22}
+            height={22}
+          />
+        </button>
+
+        {/* Center: Logo */}
+        <div className="absolute left-1/2 -translate-x-1/2">
           <Link href={`/${currentLocale}`}>
             <Image
               src="/assets/images/logo.svg"
-              alt="Logo"
-              width={250}
-              height={60}
-              className="cursor-pointer w-auto h-auto max-w-[200px] sm:max-w-[250px] md:max-w-[250px]"
+              alt="ART Construction"
+              width={220}
+              height={50}
+              className="w-auto h-auto max-w-[160px] sm:max-w-[220px] cursor-pointer"
+              priority
             />
           </Link>
         </div>
 
-        {/* Right: Language Options */}
-        <div className="flex items-center gap-3 text-black text-sm sm:text-base">
+        {/* Right: Language switcher */}
+        <div className="flex items-center gap-2 text-sm ff_poppins text-[#111]">
           <Link
             href={`/fr/${pathWithoutLocale}`}
-            className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 px-2 py-1 rounded transition-colors ${
-              currentLocale === "fr"
-                ? "font-bold text-blue-600 bg-blue-50/50"
-                : ""
+            className={`px-1 transition-opacity hover:opacity-60 ${
+              currentLocale === "fr" ? "font-semibold" : "opacity-40"
             }`}
           >
             FR
           </Link>
+          <span className="opacity-30 text-xs">|</span>
           <Link
             href={`/en/${pathWithoutLocale}`}
-            className={`ff_poppins font-normal cursor-pointer hover:text-blue-600 px-2 py-1 rounded transition-colors ${
-              currentLocale === "en"
-                ? "font-bold text-blue-600 bg-blue-50/50"
-                : ""
+            className={`px-1 transition-opacity hover:opacity-60 ${
+              currentLocale === "en" ? "font-semibold" : "opacity-40"
             }`}
           >
             ENG
@@ -87,43 +70,39 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Drawer (Glossy Sidebar) */}
+      {/* ── Drawer (Sidebar) ── */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 md:w-80 shadow-2xl z-50 p-5 transform transition-transform duration-500 ease-in-out border-r border-white/30
-          bg-white backdrop-blur-xl ${
-            isOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+        className={`fixed top-0 left-0 h-full w-64 md:w-80 bg-white z-50 p-8 shadow-2xl
+          transform transition-transform duration-500 ease-in-out
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        {/* Close Button */}
-        <div className="flex justify-end mb-4">
-          <button
-            onClick={toggleDrawer}
-            className="p-2 hover:bg-black/5 rounded-full transition-all"
-          >
+        {/* Close */}
+        <div className="flex justify-end mb-8">
+          <button onClick={toggleDrawer} className="p-1 hover:opacity-50 transition-opacity">
             <IoClose className="text-2xl text-gray-800" />
           </button>
         </div>
 
-        {/* Logo inside drawer */}
-        <div className="flex justify-left mb-6">
+        {/* Logo */}
+        <div className="mb-10">
           <Link href={`/${currentLocale}`} onClick={toggleDrawer}>
             <Image
               src="/assets/images/logo.svg"
-              alt="Logo"
-              width={180}
-              height={60}
-              className="w-auto h-auto max-w-[160px]"
+              alt="ART Construction"
+              width={160}
+              height={45}
+              className="w-auto h-auto max-w-[140px]"
             />
           </Link>
         </div>
 
-        {/* Menu Items */}
-        <nav className="mt-8">
-          <ul className="space-y-6 text-lg">
+        {/* Nav links */}
+        <nav>
+          <ul className="space-y-7 text-[15px]">
             <li>
               <Link
                 href={`/${currentLocale}`}
-                className="block hover:translate-x-2 hover:text-blue-600 transition-all main_text ff_poppins"
+                className="block main_text ff_poppins tracking-wide hover:text-[#F3C76C] transition-colors"
                 onClick={toggleDrawer}
               >
                 Home
@@ -132,7 +111,7 @@ const Header = () => {
             <li>
               <Link
                 href={`/${currentLocale}/about`}
-                className="block hover:translate-x-2 hover:text-blue-600 transition-all main_text ff_poppins"
+                className="block main_text ff_poppins tracking-wide hover:text-[#F3C76C] transition-colors"
                 onClick={toggleDrawer}
               >
                 About Us
@@ -141,80 +120,43 @@ const Header = () => {
 
             <hr className="border-black/10" />
 
-            {/* Services dropdown */}
+            {/* Services accordion */}
             <li>
               <button
                 type="button"
-                onClick={() => setProjectsOpen((prev) => !prev)}
-                className="w-full flex items-center justify-between hover:text-blue-600 transition-colors main_text ff_poppins focus:outline-none"
+                onClick={() => setProjectsOpen((p) => !p)}
+                className="w-full flex items-center justify-between main_text ff_poppins tracking-wide hover:text-[#F3C76C] transition-colors focus:outline-none"
               >
                 <span>Services</span>
                 <svg
-                  className={`w-4 h-4 transform transition-transform duration-300 ${
-                    projectsOpen ? "rotate-180" : ""
-                  }`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  className={`w-3.5 h-3.5 transition-transform duration-300 ${projectsOpen ? "rotate-180" : ""}`}
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 >
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
-
-              {/* Glossy Sub-menu */}
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  projectsOpen ? "max-h-60 mt-2" : "max-h-0"
-                }`}
-              >
-                <ul className="pl-4 space-y-2 border-l border-black/10 ml-1">
-                  <li>
-                    <Link
-                      href={`/${currentLocale}/renovation`}
-                      className="block px-2 py-2 hover:bg-white/40 hover:backdrop-blur-sm rounded transition-all main_text ff_poppins"
-                      onClick={() => {
-                        toggleDrawer();
-                        setProjectsOpen(false);
-                      }}
-                    >
-                      Renovation
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`/${currentLocale}/planning`}
-                      className="block px-2 py-2 hover:bg-white/40 hover:backdrop-blur-sm rounded transition-all main_text ff_poppins"
-                      onClick={() => {
-                        toggleDrawer();
-                        setProjectsOpen(false);
-                      }}
-                    >
-                      Planning
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`/${currentLocale}/demolition`}
-                      className="block px-2 py-2 hover:bg-white/40 hover:backdrop-blur-sm rounded transition-all main_text ff_poppins"
-                      onClick={() => {
-                        toggleDrawer();
-                        setProjectsOpen(false);
-                      }}
-                    >
-                      Demolition
-                    </Link>
-                  </li>
+              <div className={`overflow-hidden transition-all duration-300 ${projectsOpen ? "max-h-48 mt-3" : "max-h-0"}`}>
+                <ul className="pl-4 space-y-3 border-l border-black/10">
+                  {["renovation", "planning", "demolition"].map((s) => (
+                    <li key={s}>
+                      <Link
+                        href={`/${currentLocale}/${s}`}
+                        className="block py-1 ff_poppins text-[14px] text-[#555] capitalize hover:text-[#F3C76C] transition-colors"
+                        onClick={() => { toggleDrawer(); setProjectsOpen(false); }}
+                      >
+                        {s.charAt(0).toUpperCase() + s.slice(1)}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
 
             <li>
               <Link
-                href={`/${currentLocale}/projects/residential`}
-                className="block hover:translate-x-2 hover:text-blue-600 transition-all main_text ff_poppins"
+                href={`/${currentLocale}/projects`}
+                className="block main_text ff_poppins tracking-wide hover:text-[#F3C76C] transition-colors"
                 onClick={toggleDrawer}
               >
                 Projects
@@ -226,7 +168,7 @@ const Header = () => {
             <li>
               <Link
                 href={`/${currentLocale}/contact`}
-                className="block hover:translate-x-2 hover:text-blue-600 transition-all main_text ff_poppins"
+                className="block main_text ff_poppins tracking-wide hover:text-[#F3C76C] transition-colors"
                 onClick={toggleDrawer}
               >
                 Contact Us
@@ -236,12 +178,12 @@ const Header = () => {
         </nav>
       </div>
 
-      {/* Dark Overlay */}
+      {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-40 transition-opacity"
+          className="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-40"
           onClick={toggleDrawer}
-        ></div>
+        />
       )}
     </>
   );

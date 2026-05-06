@@ -15,6 +15,12 @@
 }
 @font-face {
   font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
   src: url('/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
@@ -32,26 +38,35 @@
   --foreground: #171717;
 
   --font-sans: 'Publico Banner', serif;
-  --font-mono: 'Poppins', monospace;
+  --font-mono: 'Poppins', sans-serif;
 
-  --heading-color : #000000;
-  --text-color : #302543;
-  --text2-color : #00102F;
+  --heading-color: #000000;
+  --text-color: #302543;
+  --text2-color: #00102F;
+
+  --gold: #F3C76C;
+  --gold-dark: #e0b85c;
 }
 
-/* === Dark Mode Support === */
+/* === Dark Mode — keep white background as intended by design === */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #fff;
-    --foreground: #ededed;
+    --foreground: #171717;
   }
 }
 
 /* === Global Body Styles === */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* === Custom Font Classes === */
@@ -60,12 +75,10 @@ body {
 }
 
 .ff_poppins {
-  font-family: 'Poppins', monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-/* === Custom colors Classes === */
-
+/* === Custom Color Classes === */
 .heading_text {
   color: var(--heading-color);
 }
@@ -76,4 +89,13 @@ body {
 
 .secondary_text {
   color: var(--text2-color);
+}
+
+/* === Utility: hide scrollbar (used in tabs) === */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

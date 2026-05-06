@@ -1,12 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Lightbox from 'yet-another-react-lightbox';
-import 'yet-another-react-lightbox/styles.css';
-import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
-import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Image from 'next/image';
-import Heading from '../components/Heading';
 import Link from 'next/link';
 import axios from 'axios';
 import { DOMAIN } from '@/app/utils/api';
@@ -23,24 +18,15 @@ export default function ClientProjectsGallery({ data, locale }) {
         label: proj.project_name,
     }));
 
-    // Store slug instead of id
     const [activeTab, setActiveTab] = useState(tabs[0]?.slug || null);
     const [currentDetails, setCurrentDetails] = useState(project_details);
     const [loading, setLoading] = useState(false);
 
-    // Lightbox state
-    // const [open, setOpen] = useState(false);
-    const [index, setIndex] = useState(0);
-
-    // Fetch data on tab change
     useEffect(() => {
         async function fetchData() {
-
             try {
                 setLoading(true);
-                const res = await axios.get(
-                    `${DOMAIN}api/project-details/${activeTab}`
-                );
+                const res = await axios.get(`${DOMAIN}api/project-details/${activeTab}`);
                 setCurrentDetails(res.data?.data?.project_details || []);
             } catch (error) {
                 console.error('Error fetching project details:', error);
@@ -49,139 +35,104 @@ export default function ClientProjectsGallery({ data, locale }) {
                 setLoading(false);
             }
         }
-
-        if (activeTab) {
-            fetchData();
-        }
+        if (activeTab) fetchData();
     }, [activeTab, locale]);
 
     const currentImages = currentDetails.map((detail) => ({
         src: `${process.env.NEXT_PUBLIC_API_URL}/${detail.project_type_single_img}`,
-        alt:
-            detail.project_type_single_img_alt_text ||
-            detail.project_type_name ||
-            'Project Image',
+        alt: detail.project_type_single_img_alt_text || detail.project_type_name || 'Project Image',
         name: detail.project_type_name,
-        description: detail.project_Details, // ✅ fixed (your API has project_Details, not project_description)
+        description: detail.project_Details,
         date: detail.project_date,
         slug: detail.project_type_slug,
     }));
 
     return (
-        <div
-            className="container mx-auto md:py-10 max-w-7xl px-4 sm:px-6"
-            data-aos="fade-up"
-        >
-            <Heading title="Projects" />
+        <div className="container mx-auto pt-32 pb-20 max-w-7xl px-4 sm:px-6">
 
-            {/* Tabs */}
-            <div className="flex justify-center my-6 sm:my-10">
-                <div className="flex gap-4 sm:gap-8 text-md sm:text-lg items-center overflow-x-auto no-scrollbar whitespace-nowrap">
+            {/* Page title */}
+            <h1 className="text-[40px] sm:text-[56px] lg:text-[72px] heading_text font-[400] text-center mb-4">
+                PROJECTS
+            </h1>
+
+            {/* Grey dot tags — Construction · Renovation · B2B */}
+            <div className="flex justify-center items-center gap-3 mb-10">
+                {tabs.map((tab, idx) => (
+                    <div key={`tag-${tab.slug}`} className="flex items-center gap-3">
+                        <span className="text-[#AAAAAA] ff_poppins text-sm sm:text-base tracking-widest uppercase">
+                            {tab.label}
+                        </span>
+                        {idx < tabs.length - 1 && (
+                            <span className="text-[#AAAAAA] text-xs">●</span>
+                        )}
+                    </div>
+                ))}
+            </div>
+
+            {/* Active filter tabs */}
+            <div className="flex justify-center my-8">
+                <div className="flex gap-6 sm:gap-10 text-sm sm:text-base items-center overflow-x-auto no-scrollbar whitespace-nowrap">
                     {tabs.map((tab, idx) => (
-                        <div key={`${tab.slug}-${idx}`} className="flex items-center gap-2 sm:gap-4">
+                        <div key={`${tab.slug}-${idx}`} className="flex items-center gap-4 sm:gap-6">
                             <span
                                 onClick={() => setActiveTab(tab.slug)}
-                                className={`tracking-widest cursor-pointer ${activeTab === tab.slug ? 'text-[#1F2937] font-medium' : 'text-[#C7C7C7]'
-                                    }`}
+                                className={`tracking-widest uppercase cursor-pointer transition-colors duration-300 ff_poppins ${
+                                    activeTab === tab.slug
+                                        ? 'text-[#1F2937] font-semibold border-b border-[#1F2937] pb-0.5'
+                                        : 'text-[#C7C7C7] hover:text-[#888]'
+                                }`}
                             >
                                 {tab.label}
                             </span>
                             {idx < tabs.length - 1 && (
-                                <Image
-                                    src="/assets/images/star_icon.png"
-                                    alt="star"
-                                    width={20}
-                                    height={20}
-                                />
+                                <Image src="/assets/images/star_icon.png" alt="·" width={14} height={14} className="opacity-30" />
                             )}
                         </div>
                     ))}
-
                 </div>
             </div>
 
-            {/* Card Layout */}
+            {/* Photo grid — click the photo to open detail */}
             {loading ? (
                 <div className="flex justify-center items-center py-20">
-                    <div className="w-12 h-12 border-4 border-[#F3C76C] border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-10 h-10 border-4 border-[#F3C76C] border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : (
-                <div className="space-y-12">
+                <>
                     {currentImages.length === 0 ? (
-                        <p className="text-center text-gray-500">No projects available</p>
+                        <p className="text-center text-gray-400 ff_poppins py-20">No projects available.</p>
                     ) : (
-                        currentImages.map((proj, i) => (
-                            <div
-                                key={i}
-                                className={`flex flex-col md:flex-row items-stretch gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""
-                                    }`}
-                            >
-                                {/* Project Image */}
-                                <div
-                                    className="w-full md:w-1/2 cursor-pointer shadow-md h-[400px]"
-                                    onClick={() => {
-                                        setIndex(i);
-                                        // setOpen(true);
-                                    }}
+                        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5 mt-10">
+                            {currentImages.map((proj, i) => (
+                                <Link
+                                    key={i}
+                                    href={`/${locale}/projects/${proj.slug}`}
+                                    className="break-inside-avoid block group relative overflow-hidden"
                                 >
                                     <Image
                                         src={proj.src}
                                         alt={proj.alt}
-                                        width={535}
-                                        height={200}
-                                        className="w-full h-full object-cover"
+                                        width={600}
+                                        height={800}
+                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                                     />
-                                </div>
-
-
-                                {/* Project Info */}
-                                <div className="w-full md:w-1/2 flex flex-col justify-between">
-                                    {/* Top Section (title, description, date) */}
-                                    <div className="space-y-3">
-                                        <h3 className="text-[24px] font-medium ff_poppins text-[#000000]">
-                                            {proj.name || "Project Name"}
-                                        </h3>
-                                        <p className="text-[18px] font-normal ff_poppins text-[#464646]">
-                                            Project Detail: {proj.description || "No description"}
+                                    {/* Hover overlay with project name */}
+                                    <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                                        <p className="text-white ff_poppins text-base font-medium leading-snug">
+                                            {proj.name}
                                         </p>
                                         {proj.date && (
-                                            <p className="text-[18px] font-normal ff_poppins text-[#464646]">
-                                                Project Date : {proj.date}
+                                            <p className="text-white/70 ff_poppins text-xs mt-1 tracking-widest uppercase">
+                                                {proj.date}
                                             </p>
                                         )}
                                     </div>
-
-
-                                    {/* Bottom Section (button) */}
-                                    <Link
-                                        href={`/${locale}/projects/${proj.slug}`}
-                                        className="mt-4 inline-flex items-center gap-2 bg-[#F3C76C] px-8 py-3 text-md ff_poppins text-[#000000] self-start"
-                                    >
-                                        View Project
-                                        <Image
-                                            src="/assets/images/arrow_icon.png"
-                                            alt="arrow"
-                                            width={24}
-                                            height={24}
-                                            className="ml-3 sm:ml-5"
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                        ))
+                                </Link>
+                            ))}
+                        </div>
                     )}
-                </div>
+                </>
             )}
-
-
-            {/* Lightbox */}
-            {/* <Lightbox
-                open={open}
-                close={() => setOpen(false)}
-                slides={currentImages}
-                index={index}
-                plugins={[Thumbnails]}
-            /> */}
         </div>
     );
 }

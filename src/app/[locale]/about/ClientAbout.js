@@ -32,7 +32,7 @@ export default function ClientAbout({ data }) {
             {/* Banner section */}
             {bannerData?.main_banner_image && (
                 <div
-                    className="relative w-full h-[calc(100vh-82px)]"
+                    className="relative w-full h-[100vh]"
                     data-aos="zoom-out"
                 >
                     <Image
@@ -113,7 +113,7 @@ export default function ClientAbout({ data }) {
                     ].map((item, index) => (
                         <div
                             key={index}
-                            className="flex flex-col space-y-4 sm:space-y-6text-left"
+                            className="flex flex-col space-y-4 sm:space-y-6 text-left"
                         >
                             <p className="italic text-[#656565] text-base sm:text-lg">{item}</p>
                             <hr className="border border-gray-800 w-full" />
@@ -127,7 +127,7 @@ export default function ClientAbout({ data }) {
                     data-aos="fade-up"
                 >
                     {/* Emergency Work */}
-                    <div className="flex flex-col space-y-4 sm:space-y-6 xtext-left">
+                    <div className="flex flex-col space-y-4 sm:space-y-6 text-left">
                         <p className="italic text-[#656565] text-base sm:text-lg">Emergency Work</p>
                         <hr className="border border-gray-800 w-full" />
                     </div>
