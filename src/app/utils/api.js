@@ -1,14 +1,11 @@
 import axios from "axios";
 
-// export const DOMAIN = "https://www.cms.artconstruction.be/theArt/public/";
-// export const BASEURL = axios.create({
-//     baseURL: DOMAIN + "api/",
-// });
 
 export const DOMAIN = "https://www.cms.artconstruction.be/";
 export const BASEURL = axios.create({
     baseURL: DOMAIN + "api/",
 });
+
 
 export const HOMEPAGE = "home-page";
 export const ABOUTUS = "about-us";

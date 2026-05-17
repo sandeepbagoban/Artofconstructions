@@ -3,7 +3,7 @@
 import { useState, useTransition, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DOMAIN, BASEURL } from '@/app/utils/api';  // import BASEURL too
+import { DOMAIN } from '@/app/utils/api';
 import axios from 'axios';
 
 export default function ClientProjectsGallery({ data, locale }) {
@@ -27,9 +27,9 @@ export default function ClientProjectsGallery({ data, locale }) {
 
         startTransition(async () => {
             try {
-                // Use the same axios instance and pattern as your other API calls
+                // Matches exactly: DOMAIN + "api/" + "project-details/" + slug
                 const res = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}api/projects/${slug}?lang=${locale}`
+                    `${DOMAIN}api/project-details/${slug}?lang=${locale}`
                 );
                 const details = res.data?.data?.project_details || [];
                 setImagesByTab((prev) => ({ ...prev, [slug]: toImages(details) }));
@@ -88,7 +88,6 @@ export default function ClientProjectsGallery({ data, locale }) {
                 )}
             </div>
 
-            {/* styles unchanged from before */}
             <style>{`
                 .pg-root { max-width: 1400px; margin: 0 auto; padding: 120px 5vw 80px; }
                 .pg-title { font-size: clamp(40px, 7vw, 88px); font-weight: 400; text-align: center; letter-spacing: 0.1em; margin-bottom: 12px; }

@@ -2,28 +2,28 @@ import { projectsPageData, projectDetailData } from "@/app/utils/axios";
 import ClientProjectsGallery from "../ClientProjects";
 import ProjectDetailGallery from "../ProjectDetailGallery";
 
+// These are your fr_project_slug values from the API
 const CATEGORY_SLUGS = [
-    'residential', 'horeca-commercial', 'nouvelles-constructions',
-    'residentielle', 'horeca-et-commerce'
+    'residential', 'horeca-et-commerce', 'nouvelles-constructions',
+    'residentielle', 'horeca-commercial'
 ];
 
 export default async function ProjectPage({ params }) {
     const { locale, slug } = await params;
     const slugLower = slug.toLowerCase();
-    const isCategory = CATEGORY_SLUGS.includes(slugLower);
 
-    if (isCategory) {
+    if (CATEGORY_SLUGS.includes(slugLower)) {
         const data = await projectsPageData(locale, slugLower);
         return <ClientProjectsGallery data={data} locale={locale} />;
     }
 
-    // It's a project detail slug
+    // project_type_slug → detail page
     const data = await projectDetailData(locale, slugLower);
     return (
         <ProjectDetailGallery
-            projectImages={data?.data?.project_images || []}
-            subProject={data?.data?.subProject}
+            data={data?.data}
             slug={slugLower}
+            locale={locale}
         />
     );
 }
