@@ -100,8 +100,8 @@ export default function Footer() {
         .ft-logo {
           width: auto !important;
           height: auto !important;
-          max-width: 180px;
-          filter: brightness(0) invert(1);
+          max-width: 280px;
+          // filter: brightness(0) invert(1);
           opacity: 0.88;
           transition: opacity 0.2s ease;
         }

@@ -307,14 +307,13 @@ export default function ClientHome({ data }) {
                         />
                         <div className="ch-svc-overlay" />
                       </div>
-                      <span className="ch-svc-num-float" aria-hidden="true">0{i + 1}</span>
+                      {/* <span className="ch-svc-num-float" aria-hidden="true">0{i + 1}</span> */}
                     </div>
                     <div className="ch-svc-meta">
                       <span className="ch-svc-title">{svc.service_title}</span>
-                      <span className="ch-svc-cta">
+                      {/* <span className="ch-svc-cta">
                         Découvrir
-                        <em aria-hidden="true">→</em>
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                 );
@@ -449,7 +448,7 @@ export default function ClientHome({ data }) {
           font-style: italic;
           font-weight: 400;
           font-size: clamp(40px, 5.4vw, 84px);
-          color: rgba(255,255,255,0.46);
+          color: #FFF;
           letter-spacing: -0.025em;
         }
         .ch-hero-l2 {
@@ -458,7 +457,7 @@ export default function ClientHome({ data }) {
           font-style: normal;
           font-weight: 400;
           font-size: clamp(52px, 7.2vw, 112px);
-          color: #fff;
+          color: #C9A84C;
           letter-spacing: -0.03em;
           margin-top: -0.04em;
         }
@@ -730,7 +729,7 @@ export default function ClientHome({ data }) {
         .ch-duo {
           display: grid;
           grid-template-columns: 56% 1fr;
-          gap: 4px;
+          gap: 10px;
           align-items: end;
         }
         .ch-duo-a { position: relative; }
@@ -811,7 +810,7 @@ export default function ClientHome({ data }) {
         .ch-svc-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2px;
+          gap: 10px;
         }
         .ch-svc-card {
           cursor: pointer;
@@ -850,7 +849,7 @@ export default function ClientHome({ data }) {
           pointer-events: none;
         }
         .ch-svc-meta {
-          padding: 20px 22px 24px;
+          padding: 20px 0px 24px 0px;
           border-top: 0.5px solid #E5E1D9;
           display: flex;
           align-items: flex-end;
@@ -858,7 +857,7 @@ export default function ClientHome({ data }) {
           background: #F7F5F0;
           transition: background 0.32s ease;
         }
-        .ch-svc-card:hover .ch-svc-meta { background: #EDEAE3; }
+        // .ch-svc-card:hover .ch-svc-meta { background: #EDEAE3; }
         .ch-svc-title {
           font-family: var(--font-serif, Georgia, serif);
           font-style: italic;

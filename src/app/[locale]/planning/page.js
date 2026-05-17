@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function PlanningPage({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const data = await planningPageData(locale);
   return <ClientPlanning data={data} />;
 }

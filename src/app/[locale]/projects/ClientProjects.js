@@ -1,138 +1,126 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useTransition, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { DOMAIN, BASEURL } from '@/app/utils/api';  // import BASEURL too
 import axios from 'axios';
-import { DOMAIN } from '@/app/utils/api';
 
 export default function ClientProjectsGallery({ data, locale }) {
     const { project_tabs = [], project_details = [] } = data?.data || {};
 
-    if (!project_tabs.length) {
-        return <div>Loading...</div>;
-    }
-
     const tabs = project_tabs.map((proj) => ({
-        slug: proj.project_slug,
-        label: proj.project_name,
+        slug: proj.fr_project_slug,
+        label: proj.fr_project_name,
     }));
 
     const [activeTab, setActiveTab] = useState(tabs[0]?.slug || null);
-    const [currentDetails, setCurrentDetails] = useState(project_details);
-    const [loading, setLoading] = useState(false);
+    const [imagesByTab, setImagesByTab] = useState({
+        [tabs[0]?.slug]: toImages(project_details),
+    });
+    const [isPending, startTransition] = useTransition();
 
-    useEffect(() => {
-        async function fetchData() {
+    const handleTabClick = useCallback(async (slug) => {
+        if (slug === activeTab) return;
+        setActiveTab(slug);
+        if (imagesByTab[slug] !== undefined) return;
+
+        startTransition(async () => {
             try {
-                setLoading(true);
-                const res = await axios.get(`${DOMAIN}api/project-details/${activeTab}`);
-                setCurrentDetails(res.data?.data?.project_details || []);
-            } catch (error) {
-                console.error('Error fetching project details:', error);
-                setCurrentDetails([]);
-            } finally {
-                setLoading(false);
+                // Use the same axios instance and pattern as your other API calls
+                const res = await axios.get(
+                    `${process.env.NEXT_PUBLIC_API_URL}api/projects/${slug}?lang=${locale}`
+                );
+                const details = res.data?.data?.project_details || [];
+                setImagesByTab((prev) => ({ ...prev, [slug]: toImages(details) }));
+            } catch (e) {
+                console.error('Tab fetch failed:', e.message);
+                setImagesByTab((prev) => ({ ...prev, [slug]: [] }));
             }
-        }
-        if (activeTab) fetchData();
-    }, [activeTab, locale]);
+        });
+    }, [activeTab, imagesByTab, locale]);
 
-    const currentImages = currentDetails.map((detail) => ({
-        src: `${process.env.NEXT_PUBLIC_API_URL}/${detail.project_type_single_img}`,
-        alt: detail.project_type_single_img_alt_text || detail.project_type_name || 'Project Image',
-        name: detail.project_type_name,
-        description: detail.project_Details,
-        date: detail.project_date,
-        slug: detail.project_type_slug,
-    }));
+    const currentImages = imagesByTab[activeTab] ?? [];
+    if (!tabs.length) return null;
 
     return (
-        <div className="container mx-auto pt-32 pb-20 max-w-7xl px-4 sm:px-6">
+        <div className="pg-root">
+            <h1 className="pg-title">PROJECTS</h1>
 
-            {/* Page title */}
-            <h1 className="text-[40px] sm:text-[56px] lg:text-[72px] heading_text font-[400] text-center mb-4">
-                PROJECTS
-            </h1>
-
-            {/* Grey dot tags — Construction · Renovation · B2B */}
-            <div className="flex justify-center items-center gap-3 mb-10">
+            <nav className="pg-tabs" aria-label="Project categories">
                 {tabs.map((tab, idx) => (
-                    <div key={`tag-${tab.slug}`} className="flex items-center gap-3">
-                        <span className="text-[#AAAAAA] ff_poppins text-sm sm:text-base tracking-widest uppercase">
-                            {tab.label}
-                        </span>
-                        {idx < tabs.length - 1 && (
-                            <span className="text-[#AAAAAA] text-xs">●</span>
-                        )}
-                    </div>
+                    <button
+                        key={tab.slug}
+                        onClick={() => handleTabClick(tab.slug)}
+                        className={`pg-tab ${activeTab === tab.slug ? 'pg-tab--active' : ''}`}
+                    >
+                        {tab.label}
+                        {idx < tabs.length - 1 && <span className="pg-tab-sep" aria-hidden="true" />}
+                    </button>
                 ))}
+            </nav>
+
+            <div className={`pg-grid ${isPending ? 'pg-grid--loading' : ''}`}>
+                {currentImages.length === 0 && !isPending ? (
+                    <p className="pg-empty">No projects found for this category.</p>
+                ) : (
+                    currentImages.map((proj, i) => (
+                        <Link
+                            key={proj.slug + i}
+                            href={`/${locale}/projects/${proj.slug}`}
+                            className="pg-item"
+                            style={{ '--i': i }}
+                        >
+                            <Image
+                                src={proj.src}
+                                alt={proj.alt}
+                                width={600}
+                                height={800}
+                                loading={i < 6 ? 'eager' : 'lazy'}
+                                className="pg-item-img"
+                            />
+                            <div className="pg-item-overlay">
+                                <p className="pg-item-name">{proj.name}</p>
+                                {proj.date && <p className="pg-item-date">{proj.date}</p>}
+                            </div>
+                        </Link>
+                    ))
+                )}
             </div>
 
-            {/* Active filter tabs */}
-            <div className="flex justify-center my-8">
-                <div className="flex gap-6 sm:gap-10 text-sm sm:text-base items-center overflow-x-auto no-scrollbar whitespace-nowrap">
-                    {tabs.map((tab, idx) => (
-                        <div key={`${tab.slug}-${idx}`} className="flex items-center gap-4 sm:gap-6">
-                            <span
-                                onClick={() => setActiveTab(tab.slug)}
-                                className={`tracking-widest uppercase cursor-pointer transition-colors duration-300 ff_poppins ${
-                                    activeTab === tab.slug
-                                        ? 'text-[#1F2937] font-semibold border-b border-[#1F2937] pb-0.5'
-                                        : 'text-[#C7C7C7] hover:text-[#888]'
-                                }`}
-                            >
-                                {tab.label}
-                            </span>
-                            {idx < tabs.length - 1 && (
-                                <Image src="/assets/images/star_icon.png" alt="·" width={14} height={14} className="opacity-30" />
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Photo grid — click the photo to open detail */}
-            {loading ? (
-                <div className="flex justify-center items-center py-20">
-                    <div className="w-10 h-10 border-4 border-[#F3C76C] border-t-transparent rounded-full animate-spin"></div>
-                </div>
-            ) : (
-                <>
-                    {currentImages.length === 0 ? (
-                        <p className="text-center text-gray-400 ff_poppins py-20">No projects available.</p>
-                    ) : (
-                        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5 mt-10">
-                            {currentImages.map((proj, i) => (
-                                <Link
-                                    key={i}
-                                    href={`/${locale}/projects/${proj.slug}`}
-                                    className="break-inside-avoid block group relative overflow-hidden"
-                                >
-                                    <Image
-                                        src={proj.src}
-                                        alt={proj.alt}
-                                        width={600}
-                                        height={800}
-                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                                    />
-                                    {/* Hover overlay with project name */}
-                                    <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                                        <p className="text-white ff_poppins text-base font-medium leading-snug">
-                                            {proj.name}
-                                        </p>
-                                        {proj.date && (
-                                            <p className="text-white/70 ff_poppins text-xs mt-1 tracking-widest uppercase">
-                                                {proj.date}
-                                            </p>
-                                        )}
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    )}
-                </>
-            )}
+            {/* styles unchanged from before */}
+            <style>{`
+                .pg-root { max-width: 1400px; margin: 0 auto; padding: 120px 5vw 80px; }
+                .pg-title { font-size: clamp(40px, 7vw, 88px); font-weight: 400; text-align: center; letter-spacing: 0.1em; margin-bottom: 12px; }
+                .pg-tabs { display: flex; justify-content: center; align-items: center; gap: 0; margin-bottom: 48px; flex-wrap: wrap; }
+                .pg-tab { display: inline-flex; align-items: center; gap: 24px; background: none; border: none; padding: 10px 0; font-size: 11px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: #AAAAAA; cursor: pointer; transition: color 0.25s ease; font-family: inherit; }
+                .pg-tab:hover { color: #555; }
+                .pg-tab--active { color: #111; border-bottom: 1.5px solid #111; }
+                .pg-tab-sep { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: #DDD; margin-left: 24px; flex-shrink: 0; }
+                .pg-grid { columns: 1; gap: 16px; column-gap: 16px; transition: opacity 0.2s ease; }
+                .pg-grid--loading { opacity: 0.5; pointer-events: none; }
+                @media (min-width: 600px)  { .pg-grid { columns: 2; } }
+                @media (min-width: 1024px) { .pg-grid { columns: 3; } }
+                .pg-item { display: block; break-inside: avoid; margin-bottom: 16px; position: relative; overflow: hidden; animation: pgFadeUp 0.45s ease both; animation-delay: calc(var(--i) * 40ms); }
+                @keyframes pgFadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+                .pg-item-img { width: 100%; height: auto; display: block; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+                .pg-item:hover .pg-item-img { transform: scale(1.04); }
+                .pg-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
+                .pg-item:hover .pg-item-overlay { opacity: 1; }
+                .pg-item-name { color: #fff; font-size: 14px; font-weight: 500; margin: 0; }
+                .pg-item-date { color: rgba(255,255,255,0.65); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin: 4px 0 0; }
+                .pg-empty { text-align: center; color: #AAA; padding: 60px 0; }
+            `}</style>
         </div>
     );
+}
+
+function toImages(details = []) {
+    return details.map((d) => ({
+        src: `${DOMAIN}${d.project_type_single_img}`,
+        alt: d.project_type_single_img_alt_text || d.project_type_name || 'Project',
+        name: d.project_type_name,
+        date: d.project_date,
+        slug: d.project_type_slug,
+    }));
 }

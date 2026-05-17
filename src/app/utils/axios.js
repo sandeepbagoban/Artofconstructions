@@ -57,6 +57,8 @@ export async function renovationPageData(locale = "en") {
             message: error.message,
             config: error.config,
             response: error.response?.data,
+            status: error.response?.status,  // ← add this
+            url: error.config?.url,          // ← add this
         });
         return { error: true, message: error.message };
     }
